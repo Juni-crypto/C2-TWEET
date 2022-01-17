@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="alert alert-success mt-3" *ngIf="isTweetAdded">
+        Tweet added successfully.please <a  href="#" [routerLink]="['/home']">Click here</a> to navigate to home-page
+    </div>
+
+    <div class="container card mt-5 mb-5 border-info" *ngIf="!isTweetAdded">
+
+    <h3 class="mt-3">Post Your Tweet</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="addForm">
+        <div class="form-row mt-2">
+            <div class="form-group col-md-12">
+               
+                <textarea class="form-control" formControlName="tweet" id="userid" placeholder="Tweet should not go beyond 144 characters"rows="3"></textarea>
+                <div class="text-danger"
+                    *ngIf="addForm.get('tweet').touched && addForm.get('tweet').hasError('required')">
+                    <small>Tweet is
+                        required.</small>
+                </div>
+            </div>
+            
+
+        </div>
+       
+      
+        <div class="form-row">
+            <div class="form-group ml-1">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="!addForm.valid">Submit</button>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+</div>
+
+
+
+

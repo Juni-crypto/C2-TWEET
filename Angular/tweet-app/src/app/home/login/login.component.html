@@ -1,0 +1,46 @@
+<div class="container mb-5">
+    <div class="row justify-content-center align-items-center">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm"
+      class="border border-info rounded p-4 mt-5 col-lg-6 col-lg-offset-1">
+  
+        <div class="alert alert-danger" role="alert" *ngIf="isError">
+          Invalid Username or Password
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <h2>  <i class="material-icons mat-icon">perm_identity</i>Login</h2>
+            <div class="form-group mt-3">
+              <label class="font-weight-bold"for="username">User Name</label>
+              <input type="text" class="form-control" formControlName="username" id="username"
+                placeholder="Enter Username">
+  
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+              <label class="font-weight-bold" for="password">Password</label>
+              <input type="password" class="form-control" formControlName="password" id="password" placeholder="Enter Password">
+    
+    
+            </div>
+          </div>
+        </div>
+       
+  
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-2">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="!loginForm.valid"><i class="material-icons lgb mat-icon">login</i> Login</button>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-10">
+            <div class="text-muted text-right">New here? <a  [routerLink]="['/signup']">Signup</a></div>
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center mt-2">
+          <div class="text-muted text-right  border border-warning p-2 rounded-lg">Forget Password? <a  [routerLink]="['/forget-password']">click here to Reset</a></div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+.material-icons{
+    vertical-align: sub;
+}
+.navbar-custom{
+  
+    background-color: #00ACEE !important;
+   
+
+}
+.btn-primary{
+    background-color: #00ACEE !important;
+}
+.navbar-dark{
+    background-color: #00ACEE !important;
+}

@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="alert alert-success mt-3" *ngIf="isUserAdded">
+        User registered successfully.please <a  href="#" [routerLink]="['/login']">Click here</a> to navigate to Login Page
+    </div>
+</div>
+<div class="container card mt-5 mb-5 border-info" *ngIf="!isUserAdded">
+    <div class="alert alert-danger mt-3" *ngIf="isUserInValid">
+     Username already exists, Please try again with different username
+    </div>
+
+    <h3 class="mt-3">Sign up</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="signupForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" formControlName="firstname" id="firstname"
+                    placeholder="First Name">
+                <div class="text-danger"
+                    *ngIf="signupForm.get('firstname').touched && signupForm.get('firstname').hasError('required')">
+                    <small>First Name is
+                        required.</small>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" id="lastname" formControlName="lastname" placeholder="Last Name">
+                <div class="text-danger"
+                    *ngIf="signupForm.get('lastname').touched && signupForm.get('lastname').hasError('required')">
+                    <small>Last name is
+                        required.</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" id="username" formControlName="username" placeholder="User Name">
+                <div class="text-danger"
+                    *ngIf="signupForm.get('username').touched && signupForm.get('username').hasError('required')">
+                    <small>User name is
+                        required.</small>
+                </div>
+    
+    
+            </div>
+            <div class="form-group col-md-6">
+                <label for="LoanProperty">Password</label>
+                <input type="text" class="form-control" id="LoanProperty" formControlName="password" placeholder="Password">
+                <div class="text-danger"
+                    *ngIf="signupForm.get('password').touched && signupForm.get('password').hasError('required')">
+                    <small>Password is
+                        required.</small>
+                </div>
+                <div class="text-danger"
+                *ngIf="signupForm.get('password').touched && signupForm.get('password').hasError('minlength')">
+                <small>Please enter valid Password
+                    </small>
+            </div>
+    
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="gender">Gender</label>
+              
+             
+                <select id="gender" class="form-control" formControlName="gender" placeholder="Choose the Gender" required>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
+                </select>
+                <div class="text-danger"
+                *ngIf="signupForm.get('gender').touched && signupForm.get('gender').hasError('required')">
+                <small>Gender is
+                    required.</small>
+            </div> 
+            </div>
+            <div class="form-group col-md-6">
+                <label for="gender">Contact Number</label>
+                <input type="text" class="form-control" id="gender" formControlName="contactnumber" placeholder="contact Number">
+                <div class="text-danger"
+                    *ngIf="signupForm.get('contactnumber').touched && signupForm.get('contactnumber').hasError('required')">
+                    <small>Contact Number is
+                        required.</small>
+                </div>
+                <div class="text-danger"
+                *ngIf="signupForm.get('contactnumber').touched && signupForm.get('contactnumber').hasError('minlength')">
+                <small>Contact number should contain 10 numbers
+                    </small>
+                </div>
+
+
+    
+            </div>
+           
+
+        </div>
+
+       
+      
+        <div class="form-row">
+            <div class="form-group ml-1">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="!signupForm.valid">Submit</button>
+            </div>
+        </div>
+
+
+    </form>
+
+
+
+
+
+
+
+</div>
+

@@ -1,0 +1,78 @@
+<div class="container mt-4">
+    <ul class="card p-3 border-success">
+        <div class="row ">
+            <div class="col-md-6 mt-1">
+                <button type="button" class="btn btn-info btn-lg  btn-block" (click)="onYourTweets()">My Tweets</button>
+            </div>
+            <div class="col-md-6 mt-1">
+                <button type="button" class="btn btn-info btn-lg  btn-block" (click)="onNewTweet()">Post New Tweet</button>
+            </div>
+        </div>
+       
+    </ul>
+
+</div>
+<div class="container  mb-5 pb-5">
+
+    <div class="alert alert-danger text-danger" *ngIf="!isTweetsAvailable">No Records Found .Please search above.</div>
+  
+   
+    <ul class="list-group mt-3" *ngIf="isTweetsAvailable">
+        <div class="row  m-2">
+            <div class="col-md-12">
+                <h4 class="text-info">AVAILABLE TWEETS :</h4>
+                <div class="alert alert-success"  *ngIf="isDeleted">Loan Deleted successfully</div>
+            </div>
+          
+        </div>
+        <div class="d-flex justify-content-center" *ngIf="isLoading">
+            <img style="width:75px;height:75px;"src="assets/loading-png.gif"/>
+        </div>
+        <li class="list-group-item m-2 border-info rounded" *ngFor="let tweet of tweets">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Tweet By <span class=" text-muted">{{tweet.firstname|uppercase}}</span></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Tweet: <span class=" text-muted">"{{tweet.tweet}}"</span></h5>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>Posted on: <span class=" text-muted">{{tweet.date| date :'MMMM d, y'}} at <span class=" text-muted">{{tweet.date|date:'h:mm a'}}</span></span></h5>
+                </div>
+            </div>
+            <div class="row">
+               
+
+                <div class="col-md-6">
+                    <h5>{{tweet.likes}} Likes</h5>
+                </div>
+                <div class="col-md-2 col-sm-6 mb-2">
+                    <button type="button" class="btn btn-outline-success" (click)="onLike(tweet.id)">Like <i class="material-icons mat-icon">thumb_up</i></button>
+                </div>
+                <div class="col-md-2 col-sm-4 mb-2">
+                    <button type="button" class="btn btn-outline-info" (click)="onReply(tweet.id)">Reply <i class="material-icons mat-icon">reply</i></button>
+                </div>
+            </div>
+           
+            <ul class="list-group" >
+                <div class="row" *ngIf="tweet.reply.length">
+                    <div class="col-md-12">
+                       <b> Replies</b>
+                    </div>
+                </div>
+                <li class="list-group-item m-2 " *ngFor="let reply of tweet.reply; let i = index">
+                    <div class="row">
+                        <div class="col-md-6">
+                         {{i+1}}.   {{reply}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+
+    </ul>
+</div>
